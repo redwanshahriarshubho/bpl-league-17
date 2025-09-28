@@ -5,10 +5,69 @@ import Navbar from './components/Navbar/Navbar';
 import AvailablePlayers from './components/AvailablePlayers/AvailablePlayers';
 import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers';
 
+// Mock data for development - replace with actual fetch when ready
+const mockPlayers = [
+  {
+    "player_id": 1,
+    "player_name": "Tamim Iqbal",
+    "country": "Bangladesh",
+    "role": "Batsman",
+    "price": "৳5000000",
+    "image": "https://example.com/tamim.jpg"
+  },
+  {
+    "player_id": 2,
+    "player_name": "Shakib Al Hasan",
+    "country": "Bangladesh",
+    "role": "All-rounder",
+    "price": "৳7000000",
+    "image": "https://example.com/shakib.jpg"
+  },
+  {
+    "player_id": 3,
+    "player_name": "Mushfiqur Rahim",
+    "country": "Bangladesh",
+    "role": "Wicket-keeper",
+    "price": "৳4500000",
+    "image": "https://example.com/mushfiq.jpg"
+  },
+  {
+    "player_id": 4,
+    "player_name": "Mahmudullah",
+    "country": "Bangladesh",
+    "role": "All-rounder",
+    "price": "৳4000000",
+    "image": "https://example.com/mahmudullah.jpg"
+  },
+  {
+    "player_id": 5,
+    "player_name": "Mustafizur Rahman",
+    "country": "Bangladesh",
+    "role": "Bowler",
+    "price": "৳6000000",
+    "image": "https://example.com/mustafizur.jpg"
+  },
+  {
+    "player_id": 6,
+    "player_name": "Taskin Ahmed",
+    "country": "Bangladesh",
+    "role": "Bowler",
+    "price": "৳3500000",
+    "image": "https://example.com/taskin.jpg"
+  }
+];
+
 const fetchPlayers = async () => {
-  const res = await fetch('/players.json');
-  return res.json();
+  // For production, use this:
+  // const res = await fetch('/players.json');
+  // return res.json();
+  
+  // For development, use mock data
+  return new Promise(resolve => {
+    setTimeout(() => resolve(mockPlayers), 800); // Simulate network delay
+  });
 };
+
 const playersPromise = fetchPlayers();
 
 function App() {
